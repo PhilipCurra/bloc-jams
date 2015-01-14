@@ -9,11 +9,11 @@ body {
   background: radial-gradient(#2b1339, #380c77); }
 
 body.landing {
-  background: #5b5579; }
+  background: #5b5579;
+  color: white; }
 
 body.landing .navbar {
-  margin-bottom: 0;
-  color: white; }
+  margin-bottom: 0; }
 
 .container {
   color: white; }
