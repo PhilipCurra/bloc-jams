@@ -3,13 +3,13 @@ html {
 
 body {
   font-family: 'Open Sans';
-  color: white;
   min-height: 100%;
   background: -webkit-radial-gradient(#2b1339, #380c77);
   background: radial-gradient(#2b1339, #380c77); }
 
 body.landing {
-  background: #5b5579; }
+  background: #5b5579;
+  color: white; }
 
 body.landing .navbar {
   margin-bottom: 0; }
@@ -24,7 +24,8 @@ body.landing .navbar {
 .hero-content h1 {
   font-size: 70px;
   margin-bottom: 50px;
-  font-weight: 300; }
+  font-weight: 300;
+  color: white; }
 
 .selling-points {
   padding: 100px 0; }
