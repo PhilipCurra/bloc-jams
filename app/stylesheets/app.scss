@@ -4,7 +4,7 @@ html {
 
 body {
 	font-family: 'Open Sans';
-	//color: white;
+	color: white;
 	min-height: 100%;
 	background: -webkit-radial-gradient( #2b1339, #380c77);
 	background: radial-gradient( #2b1339, #380c77);
@@ -12,11 +12,15 @@ body {
 
 body.landing {
 	background: #5B5579;
-	color: white;
 }
 
 body.landing .navbar {
 	margin-bottom: 0;
+	color:white;
+}
+
+.container {
+	color:white;
 }
 
 .player-header-nav {
