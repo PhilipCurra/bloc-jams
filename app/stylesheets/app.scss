@@ -219,7 +219,22 @@ td.song-number {
 }
 
 .player-bar a, .player-bar a:hover {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.player-bar .left-controls a {
 	color: white;
+	opacity: 0.4;
+	cursor: pointer;
+	text-decoration: none;
+	transition: opacity 100ms ease-in-out;
+}
+
+.player-bar .left-controls a:hover {
+	color: white;
+	opacity: 1.0;
 	cursor: pointer;
 	text-decoration: none;
 }
