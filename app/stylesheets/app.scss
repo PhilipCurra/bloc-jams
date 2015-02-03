@@ -16,6 +16,19 @@ html {
 	padding-bottom: 150px;
 	.player-header-nav {
 	  background-color: rgba(123, 70, 163, 0.9);
+	  .navbar-nav {
+		a {
+		  line-height: 45px;
+		  color: white;
+		  text-transform: uppercase;
+		  font-weight: 700;
+		  letter-spacing: 7px;
+
+		  &:hover {
+			color: rgba(123,70,163,0.9);
+		  }
+		}
+	  }
 	}
 	.landing {
 	  background: #5B5579;

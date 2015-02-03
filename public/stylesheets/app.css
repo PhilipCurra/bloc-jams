@@ -325,6 +325,14 @@ html {
     padding-bottom: 150px; }
     html body .player-header-nav {
       background-color: rgba(123, 70, 163, 0.9); }
+      html body .player-header-nav .navbar-nav a {
+        line-height: 45px;
+        color: white;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 7px; }
+        html body .player-header-nav .navbar-nav a:hover {
+          color: rgba(123, 70, 163, 0.9); }
     html body .landing {
       background: #5b5579;
       padding-bottom: 0; }

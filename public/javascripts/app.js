@@ -91,36 +91,6 @@
   globals.require.brunch = true;
 })();
 require.register("scripts/album", function(exports, require, module) {
-var albumPicasso = {
-	name: 'The Colors',
-	artist: 'Pablo Picasso',
-	label: 'Cubism',
-	year: '1881',
-	albumArtUrl: '/images/album-placeholder.png',
-	songs: [
-		{ name: 'Blue', length: '4:26'},
-		{ name: 'Green', length: '3:14'},
-		{ name: 'Red', length: '5:01'},
-		{ name: 'Pink', length: '3:21'},
-		{ name: 'Magenta', length: '2:15'}
-	]
-};
-
-var albumMarconi = {
-	name: 'The Telephone',
-	artist: 'Guglielmo Marconi',
-	label: 'EM',
-	year: '1909',
-	albumArtUrl: '/images/album-placeholder.png',
-	songs: [
-		{ name: 'Hello, Operator?', length: '1:01'},
-		{ name: 'Ring, ring, ring', length: '5:01'},
-		{ name: 'Fits in your pocket', length: '3:21'},
-		{ name: 'Can you hear me now?', length: '3:14'},
-		{ name: 'Wrong phone number', length: '2:15'}
-	]
-};
-
 var currentlyPlayingSong = null;
 
 var createSongRow = function(songNumber, songName, songLength) {
@@ -247,9 +217,45 @@ if(document.URL.match(/\/album.html/)) {
 //require("./album");
 //require("./profile");
 
+var albumPicasso = {
+    name: 'The Colors',
+    artist: 'Pablo Picasso',
+    label: 'Cubism',
+    year: '1881',
+    albumArtUrl: '/images/album-placeholder.png',
+    songs: [
+        { name: 'Blue', length: '4:26'},
+        { name: 'Green', length: '3:14'},
+        { name: 'Red', length: '5:01'},
+        { name: 'Pink', length: '3:21'},
+        { name: 'Magenta', length: '2:15'}
+    ]
+};
+
+var albumMarconi = {
+    name: 'The Telephone',
+    artist: 'Guglielmo Marconi',
+    label: 'EM',
+    year: '1909',
+    albumArtUrl: '/images/album-placeholder.png',
+    songs: [
+        { name: 'Hello, Operator?', length: '1:01'},
+        { name: 'Ring, ring, ring', length: '5:01'},
+        { name: 'Fits in your pocket', length: '3:21'},
+        { name: 'Can you hear me now?', length: '3:14'},
+        { name: 'Wrong phone number', length: '2:15'}
+    ]
+};
+
 blocJams = angular.module('BlocJams', ['ui.router']);
 blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
+
+    $stateProvider.state('collection', {
+        url: '/collection',
+        controller: 'Collection.controller',
+        templateUrl: '/templates/collection.html'
+    });
 
     $stateProvider.state('landing', {
         url: '/',
@@ -259,7 +265,7 @@ blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider,
 }]);
 
 blocJams.controller('Landing.controller', ['$scope', function($scope) {
-    $scope.jamsHeading = "Bloc Jamos";
+    $scope.jamsHeading = "Bloc Jams";
     $scope.subText = "Turn up the music!";
     $scope.subTextClicked = function() {
         $scope.subText += '!';
@@ -276,6 +282,13 @@ blocJams.controller('Landing.controller', ['$scope', function($scope) {
         '/images/album-placeholders/album-8.jpg',
         '/images/album-placeholders/album-9.jpg'
     ];
+}]);
+
+blocJams.controller('Collection.controller', ['$scope', function($scope) {
+    $scope.albums = [];
+    for(var i=0; i<33;i++) {
+        $scope.albums.push(angular.copy(albumPicasso));
+    }
 }]);
 });
 
@@ -320,8 +333,8 @@ var buildAlbumOverlay = function(albumURL) {
 var updateCollectionView = function(){
 	var $collection = $(".collection-container .row");
 	$collection.empty();
-	var max = Math.floor((Math.random()*76)+25);
-	for(var i=0; i<max; i++) {
+	//var max = Math.floor((Math.random()*76)+25);
+	for(var i=0; i<33; i++) {
 		var $newThumbnail = buildAlbumThumbnail();
 		$collection.append($newThumbnail);
 	}

@@ -38,8 +38,8 @@ var buildAlbumOverlay = function(albumURL) {
 var updateCollectionView = function(){
 	var $collection = $(".collection-container .row");
 	$collection.empty();
-	var max = Math.floor((Math.random()*76)+25);
-	for(var i=0; i<max; i++) {
+	//var max = Math.floor((Math.random()*76)+25);
+	for(var i=0; i<33; i++) {
 		var $newThumbnail = buildAlbumThumbnail();
 		$collection.append($newThumbnail);
 	}
