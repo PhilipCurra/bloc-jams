@@ -420,7 +420,7 @@ blocJams.directive('slider', ['$document', function($document) {
                 });
 
                 $document.bind('mouseup.thumb', function() {
-                    $document.unbind('mouseup.thumb');
+                    $document.unbind('mousemove.thumb');
                     $document.unbind('mouseup.thumb');
                 });
             };
