@@ -1,8 +1,3 @@
-//require("./landing");
-//require("./collection");
-//require("./album");
-//require("./profile");
-
 var albumPicasso = {
     name: 'The Colors',
     artist: 'Pablo Picasso',
@@ -82,7 +77,7 @@ blocJams.controller('Collection.controller', ['$scope', 'SongPlayer', function($
         $scope.albums.push(angular.copy(albumPicasso));
     }
     $scope.playAlbum = function(album) {
-        songPlayer.setSong(album, album.songs[0]);
+        SongPlayer.setSong(album, album.songs[0]);
     }
 }]);
 
@@ -198,18 +193,69 @@ blocJams.directive('slider', function() {
             });
 
             $seekBar.find('.thumb').mousedown(function() {
-                //var $seekBar = $(this).parent();
                 $seekBar.addClass('no-animate');
 
                 $(document).bind('mousemove.thumb', function(event) {
                     updateSeekPercentage($seekBar, event);
                 });
 
-                $(document).bind('mouseup.thumb', function () {
+                $(document).bind('mouseup.thumb', function() {
                     $seekBar.removeClass('no-animate');
                     $(document).unbind('mousemove.thumb');
                     $(document).unbind('mouseup.thumb');
                 });
+            });
+        }
+    };
+});
+
+//branch: directive-experiments
+blocJams.directive('clicker', function() {
+    return {
+        //templateUrl: '/templates/directives/clickMe.html',
+        replace: true,
+        restrict: 'E',
+        link: function(scope, element) {
+
+            var $clickAble = $(element);
+
+            $clickAble.click(function() {
+                alert("the element has been clicked");
+            });
+        }
+    };
+});
+
+//branch: directive-experiments
+blocJams.directive('hover', function() {
+    return {
+        //templateUrl: '/templates/directives/count_hover_time.html',
+        replace: true,
+        restrict: 'E',
+        link: function(scope, element) {
+
+            var $selection = $(element);
+            var loopy = -1;
+            var check = "go";
+
+            var revolve = function() {
+                loopy += 1;
+                if(check=="get out"){return;}
+                //console.log("inside iteration = " + loopy);
+                setTimeout(function() {
+                    revolve();
+                }, 1000);
+            };
+
+            $selection.mouseenter(function() {
+                check = "go";
+                revolve();
+            });
+
+            $selection.mouseleave(function() {
+                console.log("the number of seconds hovering over the tag was: " + loopy);
+                loopy = -1;
+                check = "get out";
             });
         }
     };
