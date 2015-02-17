@@ -202,7 +202,7 @@ blocJams.directive('slider', ['$document', function($document) {
         replace: true,
         restrict: 'E',
         scope: {},
-        link: function(scope, element, attributes) {
+        link: function(scope, element) {
             scope.value = 0;
             scope.max = 200;
 
