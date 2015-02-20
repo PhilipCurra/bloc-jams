@@ -6,7 +6,7 @@
             </a>
             <a class="play-pause">
                 <i class="fa fa-play" ng-show="!songPlayer.playing" ng-click="songPlayer.play()"></i>
-                <i class="fa fa-play" ng-show="songPlayer.playing" ng-click="songPlayer.pause()"></i>
+                <i class="fa fa-pause" ng-show="songPlayer.playing" ng-click="songPlayer.pause()"></i>
             </a>
             <a class="next" ng-click="songPlayer.next()">
                 <i class="fa fa-forward"></i>
@@ -23,8 +23,10 @@
         </div>
         <div class="right-controls player-bar-control-group">
             <div class="volume">
-                <i class="fa fa-volume-up"></i>
-                <slider></slider>
+                <a ng-click="playTest()">
+                    <i class="fa" ng-class="volumeClass()"></i>
+                </a>
+                <slider value="{{songPlayer.volume}}" max="100" on-change="songPlayer.setVolume(value)"></slider>
             </div>
             <div class="queue-toggle"><a><i class="fa fa-list-ul"></i></a></div>
         </div>
